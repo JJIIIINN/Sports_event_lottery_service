@@ -29,7 +29,12 @@ export const Number = styled.div`
 `;
 
 export const Button = styled.button`
-	margin-top: 1rem;
-	padding: 0.5rem 1rem;
-	font-size: 1.5rem;
+	margin-top: 25px;
+	padding: 10px 20px;
+	font-size: 20px;
+	border-radius: 5px;
+	border: 1.5px solid black;
+	&:disabled {
+		border: 1.5px solid rgba(178, 178, 178, 1);
+	}
 `;
