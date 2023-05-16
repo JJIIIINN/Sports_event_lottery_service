@@ -32,6 +32,7 @@ const getRandomNumber = () => {
 const Lottery = () => {
 	const [studentNumber, setStudentNumber] = useState<string[]>(['0', '0', '0', '0']);
 	const [history, setHistory] = useState<string[]>(cookie.get('history') || []);
+	const [reversedHistory, setReversedHistory] = useState<string[]>([]); // New state for reversed history
 	const [isStopped, setIsStopped] = useState<boolean>(true);
 
 	useEffect(() => {
@@ -61,6 +62,7 @@ const Lottery = () => {
 
 	useEffect(() => {
 		cookie.set('history', history);
+		setReversedHistory(history.slice().reverse()); // Update the reversed history array
 	}, [history]);
 
 	return (
@@ -74,7 +76,7 @@ const Lottery = () => {
 				{isStopped ? '추첨' : '추첨중...'}
 			</_.Button>
 			<_.HistoryWrapper>
-				{history.reverse().map((res, i) => (
+				{reversedHistory.map((res, i) => (
 					<_.History key={i}>{res}</_.History>
 				))}
 			</_.HistoryWrapper>
