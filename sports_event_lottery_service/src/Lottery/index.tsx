@@ -51,7 +51,7 @@ const Lottery = () => {
 		setIsStopped(false);
 		setTimeout(() => {
 			setIsStopped(true);
-		}, 3000);
+		}, 2000);
 	};
 
 	useEffect(() => {
