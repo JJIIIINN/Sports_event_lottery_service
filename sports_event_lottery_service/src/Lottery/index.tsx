@@ -2,38 +2,23 @@ import { useState, useEffect } from 'react';
 import * as _ from './style';
 
 const getRandomNumber = () => {
-	const num1 = Math.floor(Math.random() * 3 + 1);
-	const num2 = Math.floor(Math.random() * 4 + 1);
-	const num3 = num1 === 3 ? Math.floor(Math.random() * 2 + 1) : Math.floor(Math.random() * 1);
-	const num4 = () => {
-		if (num1 === 3) {
-			if (num3 === 2) {
-				return 0;
-			} else if (num3 === 1) {
-				return Math.floor(Math.random() * 9);
-			} else {
-				return Math.floor(Math.random() * 8 + 1);
-			}
-		} else if (num1 === 2) {
-			if (num3 === 1) {
-				return Math.floor(Math.random() * 8);
-			} else {
-				return Math.floor(Math.random() * 9 + 1);
-			}
+	const num1 = String(Math.floor(Math.random() * 3 + 1));
+	const num2 = String(Math.floor(Math.random() * 4 + 1));
+	const num3 = () => {
+		if (num1 === '3') {
+			return Array.from(String(Math.floor(Math.random() * 20 + 1)).padStart(2, '0'));
+		} else if (num1 === '2') {
+			return Array.from(String(Math.floor(Math.random() * 18 + 1)).padStart(2, '0'));
 		} else {
-			if (num3 === 1) {
-				return Math.floor(Math.random() * 6);
-			} else {
-				return Math.floor(Math.random() * 9 + 1);
-			}
+			return Array.from(String(Math.floor(Math.random() * 16 + 1)).padStart(2, '0'));
 		}
 	};
-
-	return [num1, num2, num3, num4()];
+	console.log([num1, num2, ...num3()]);
+	return [num1, num2, ...num3()];
 };
 
 const Lottery = () => {
-	const [studentNumber, setStudentNumber] = useState<number[]>([0, 0, 0, 0]);
+	const [studentNumber, setStudentNumber] = useState<string[]>(['0', '0', '0', '0']);
 	const [isStopped, setIsStopped] = useState<boolean>(true);
 
 	useEffect(() => {
@@ -52,7 +37,7 @@ const Lottery = () => {
 		setIsStopped(false);
 		setTimeout(() => {
 			setIsStopped(true);
-		}, 800);
+		}, 3000);
 	};
 
 	return (
