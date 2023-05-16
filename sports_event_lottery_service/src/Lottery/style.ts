@@ -38,3 +38,21 @@ export const Button = styled.button`
 		border: 1.5px solid rgba(178, 178, 178, 1);
 	}
 `;
+
+export const HistoryWrapper = styled.div`
+	border: 2px solid black;
+	margin-top: 40px;
+	border-radius: 10px;
+	width: 200px;
+	height: 200px;
+	padding: 10px;
+	gap: 10px;
+	overflow: scroll;
+`
+
+export const History = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 30px;
+`
